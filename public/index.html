@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DRMUTANT - Memevolution</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Top Scrolling Banner -->
+<div class="slider-banner">
+  <marquee behavior="scroll" direction="left">💻 Need a site like this? DM <strong>https://t.me/megamancho</strong> for a website! 💡 Fast delivery. Modern design.</marquee>
+</div>
+
+<header>
+  <img src="assets/logo.jpg" alt="DRMUTANT Logo" class="logo"/>
+  <h1>🧬 DRMUTANT</h1>
+  <p class="tagline">The Memevolution Begins</p>
+</header>
+
+<!-- Second Banner after header -->
+<div class="slider-banner below-header">
+  <marquee behavior="scroll" direction="right">⚡ DM <strong>@megamancho</strong> for crypto sites, token pages, and bots — affordable and fast ⚡</marquee>
+</div>
+
+<section class="community">
+  <h2>🌐 Join the Community</h2>
+  <div class="community-buttons">
+    <a href="https://t.me/DoctorMutantCto_Portal" class="community-btn telegram" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" width="20" height="20" /> Telegram
+    </a>
+    <a href="https://x.com/DRMUTANT_CTO" class="community-btn twitter" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter)" width="20" height="20" /> X (Twitter)
+    </a>
+  </div>
+</section>
+
+
+<main>
+  <section class="stats">
+    <h2>Live Stats</h2>
+    <div class="stat-box">
+      <span id="price">Fetching live price...</span>
+      <span id="market-cap">Fetching market cap...</span>
+      <span id="liquidity">Fetching liquidity...</span>
+      <span id="last-updated">Last updated: -</span>
+    </div>
+  </section>
+
+
+
+  <section class="chart">
+    <h2>📈 Live Price Chart</h2>
+    <iframe
+      src="https://dexscreener.com/ethereum/0xf706b758d0cc86205ed6c3e8973990e92efdb67f?embed=1"
+      frameborder="0"
+      width="100%"
+      height="400"
+      allowtransparency="true"
+      style="border-radius: 12px; margin-top: 2em;"
+    ></iframe>
+  </section>
+
+  <section class="buy">
+    <h2>🛒 How to Buy</h2>
+    <p>Head over to <a href="https://app.uniswap.org/#/swap?outputCurrency=0xe6e079e961ee2cba8fc67762eb138144c882367f" target="_blank">Uniswap</a> and grab your DRMUTANT tokens.</p>
+  </section>
+
+  <section class="memes">
+    <h2>🔥 Meme Gallery</h2>
+    <div class="meme-grid">
+      <video src="assets/animation.gif.mp4" controls autoplay muted loop></video>
+      <video src="assets/video_2025-08-13_13-28-53.mp4" controls autoplay muted loop></video>
+      <video src="assets/video_2025-08-13_22-35-32.mp4" controls autoplay muted loop></video>
+    </div>
+  </section>
+</main>
+
+<section class="community">
+  <h2>🌐 Join the Community</h2>
+  <div class="community-buttons">
+    <a href="https://t.me/DoctorMutantCto_Portal" class="community-btn telegram" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram" width="20" height="20" /> Telegram
+    </a>
+    <a href="https://x.com/DRMUTANT_CTO" class="community-btn twitter" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter)" width="20" height="20" /> X (Twitter)
+    </a>
+  </div>
+</section>
+
+<section class="created-by">
+  <p>🧑‍💻 Site created by <strong><a href="https://t.me/megamancho" target="_blank">@megamancho</a></strong> — DM me to build yours.</p>
+  <p>💸 Want to support? Send any donations to: <code id="donation-address">0x0380f5164DfBAb4A8903c3bb4276AfeA7139b856</code></p>
+  <button onclick="copyDonationAddress()" class="copy-btn">📋 Copy Address</button>
+</section>
+
+<footer>
+  <p>⚠️ This is a meme token. Not financial advice. DYOR.</p>
+</footer>
+
+<script>
+const API_URL = 'https://api.dexscreener.com/latest/dex/pairs/ethereum/0xf706b758d0cc86205ed6c3e8973990e92efdb67f';
+
+async function updateStats() {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+    const pair = data.pair;
+
+    if (!pair) throw new Error("No pair data found");
+
+    document.getElementById('price').innerText = `Price: $${Number(pair.priceUsd).toFixed(6)}`;
+    document.getElementById('market-cap').innerText = `Market Cap: $${Math.floor(pair.fdv).toLocaleString()}`;
+    document.getElementById('liquidity').innerText = `Liquidity: $${Math.floor(pair.liquidity.usd).toLocaleString()}`;
+
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('last-updated').innerText = `Last updated: ${timeStr}`;
+
+    console.log("✅ Stats updated");
+  } catch (err) {
+    console.error("❌ Failed to fetch stats:", err);
+    document.getElementById('last-updated').innerText = `⚠️ Failed to update`;
+  }
+}
+
+function copyDonationAddress() {
+  const address = document.getElementById("donation-address").innerText;
+  navigator.clipboard.writeText(address).then(() => {
+    alert("✅ Address copied to clipboard!");
+  });
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateStats();
+  setInterval(updateStats, 15000);
+});
+</script>
+</body>
+</html>

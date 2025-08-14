@@ -1,0 +1,220 @@
+/* Base Reset & Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+    color: #fff;
+    line-height: 1.6;
+    padding: 0 1em;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    padding: 2em 0;
+    background: #13ff00;
+    color: #000;
+  }
+  
+  .logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1em;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
+  }
+  
+  /* Stats Section */
+  .stats {
+    padding: 2em 0;
+    text-align: center;
+  }
+  
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    margin-top: 1em;
+    font-size: 1.1rem;
+    background: #222;
+    padding: 1em;
+    border-radius: 8px;
+  }
+  
+  /* Buy Section */
+  .buy {
+    text-align: center;
+    padding: 2em;
+    background: #111;
+    margin: 2em 0;
+  }
+  
+  .buy a {
+    color: #13ff00;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .buy a:hover {
+    text-decoration: underline;
+  }
+
+  .chart {
+    padding: 2em 0;
+    background: #121212;
+    text-align: center;
+  }
+  .chart h2 {
+    margin-bottom: 1em;
+    color: #13ff00;
+  }
+  
+  
+  /* Meme Gallery */
+  .memes {
+    padding: 2em 0;
+    text-align: center;
+  }
+  
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1em;
+    padding: 1em;
+    
+  }
+  
+  .meme-grid img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .meme-grid img:hover {
+    transform: scale(1.05);
+  }
+
+  .meme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+    padding: 1em;
+  }
+  
+  .meme-grid video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #13ff00;
+    transition: transform 0.3s ease;
+  }
+  
+  .meme-grid video:hover {
+    transform: scale(1.03);
+  }
+
+  .slider-banner {
+    background-color: #000;
+    color: #13ff00;
+    padding: 0.5em;
+    font-weight: bold;
+    font-size: 1rem;
+    border-bottom: 1px solid #13ff00;
+  }
+  
+  .slider-banner marquee {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .below-header {
+    background-color: #121212;
+    border-top: 1px solid #13ff00;
+  }
+  
+  .created-by {
+    background: #111;
+    text-align: center;
+    padding: 1.5em;
+    color: #13ff00;
+    font-size: 0.95rem;
+    margin-top: 3em;
+    border-top: 1px solid #13ff00;
+  }
+
+  .created-by code {
+    background: #000;
+    padding: 0.3em 0.6em;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #fff;
+  }
+
+  .community {
+    text-align: center;
+    padding: 2em 0;
+    background-color: #111;
+    color: #13ff00;
+  }
+
+  .community-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+    margin-top: 1em;
+  }
+
+  .community-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    text-decoration: none;
+    background: #13ff00;
+    color: #000;
+    font-weight: bold;
+    padding: 0.6em 1.2em;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .community-btn:hover {
+    background: #0aff00;
+  }
+
+  .community-btn img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.85rem;
+    color: #aaa;
+    background: #0a0a0a;
+  }
+
+  
+  /* Responsive Typography */
+  @media (max-width: 600px) {
+    .stat-box {
+      font-size: 1rem;
+    }
+  
+    .buy {
+      font-size: 0.95rem;
+    }
+  
+    header h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
