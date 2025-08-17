@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve files in public/
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '.')));
 
 app.listen(PORT, () => {
   console.log(`🌐 DRMUTANT site running at http://localhost:${PORT}`);
